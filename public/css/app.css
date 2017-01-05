@@ -1,0 +1,678 @@
+*{
+  margin:0 0 0 0;
+  padding: 0 0 0 0;
+  webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: "proxima-nova", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+  color:#777c93;
+}
+
+a{
+  color:#388CF3;
+  text-decoration: none;
+}
+a:hover{
+  color: #1546D2;
+}
+
+p{
+  color:#333;
+}
+
+.button{
+  display: inline-block;
+  background: #388CF3;
+  margin-top: 10px;
+  border:none;
+  border-radius: 2px;
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.5);
+  color:#fff;
+  font-size: 0.9em;
+  padding:10px 18px;
+}
+
+.button:hover{
+  cursor: pointer;
+  color:#fff;
+  background: #1546D2;
+}
+
+@-webkit-keyframes animation-rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-moz-keyframes animation-rotate {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-o-keyframes animation-rotate {
+  100% {
+    -o-transform: rotate(360deg);
+  }
+}
+@keyframes animation-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.button--loading {
+  position: relative;
+  cursor: wait;
+  color:transparent !important;
+}
+.button--loading:before {
+  margin: -13px 0 0 -13px;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  content: '';
+  -webkit-border-radius: 24px;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 24px;
+  -moz-background-clip: padding;
+  border-radius: 24px;
+  background-clip: padding-box;
+  border: rgba(255, 255, 255, 0.25) 2px solid;
+  border-top-color: #fff;
+  -webkit-animation: animation-rotate 750ms linear infinite;
+  -moz-animation: animation-rotate 750ms linear infinite;
+  -o-animation: animation-rotate 750ms linear infinite;
+  animation: animation-rotate 750ms linear infinite;
+}
+.button--loading span,
+.button--loading:hover span,
+.button--loading:active span {
+  color: transparent;
+  text-shadow: none;
+}
+
+.min-title{
+  display: block;
+  font-weight: 300;
+  font-size: 0.9em;
+  margin-bottom: 10px;
+}
+
+
+#wrapper{
+  display: block;
+  width: 70%;
+  min-width: 500px;
+  margin: 0 auto;
+  padding: 0 10%;
+}
+
+@media only screen and (max-device-width: 500px) {
+  #wrapper{
+    display: block;
+    width: 100%;
+    min-width: 300px;
+    margin: 0 auto;
+    padding: 0 0%;
+  }
+}
+
+#header{
+  display: flex;
+  width: 100%;
+  margin-top: 100px;
+  margin-bottom: 30px;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo{
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
+  font-size: 1.2em;
+  color:#333;
+  font-weight: 500;
+  align-self: center;
+  margin-right: 30px;
+}
+
+.logo:before{
+  display: inline-block;
+  content: '⏣';
+  font-weight: 200;
+  margin-top: 0px;
+  margin-right: 6px;
+  font-size: 1.39em;
+}
+
+.logo:after{
+  margin-top: 1px;
+  content: 'Darwin';
+}
+
+#header .avatar{
+  position: relative;
+  z-index: 20;
+  min-width: 30px;
+  min-height: 30px;
+  border-radius: 2px;
+  background-size: cover !important;
+  background-position: center;
+}
+
+#header .avatar:hover{
+  cursor: pointer;
+
+}
+
+#header .avatar:active{
+  box-shadow: inset 0 0 0 1px #fff;
+}
+
+#header .avatar .menu{
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background: #fff;
+  top:40px;
+  right:0px;
+  min-width: 100px;
+  padding:13px;
+  text-align: right;
+  list-style: none;
+  font-size: 0.9em;
+  color:#333;
+  border:1px solid #e2e2e2;
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#header .avatar .menu li{
+  display: inline-block;
+  margin-left: 20px;
+}
+
+#header .how{
+  min-width: 120px;
+  font-size: 0.8em;
+  margin:0 30px;
+}
+
+#header .how:hover{
+  cursor: pointer;
+}
+
+#header input{
+  width: 100%;
+  border-radius: 2px;
+}
+
+#header .searchBar{
+  width: 100%;
+}
+
+#header .searchBar .selectize-input{
+  width: 100%;
+  border-radius: 2px;
+  padding:10px 12px;
+}
+
+#header .searchBar .not-full #searchBar-selectized{
+  width: 200px !important;
+}
+/* BASE QUIZ STYLES */
+/* These styles ensure that the necessary elements are hidden for toggling */
+
+/* DO NOT EDIT UNLESS YOU KNOW WHAT YOU ARE DOING!! */
+
+.startQuiz,
+.nextQuestion,
+.backToQuestion,
+.questions li.question,
+.questions li.question .responses,
+.questions li.question .responses .correct,
+.questions li.question .responses .incorrect,
+.quizResults {
+    display: none;
+}
+
+/* If response messages are disabled or only shown on quiz completion,
+   nextQuestion button IS checkAnswer button - so it must be displayed */
+.nextQuestion.checkAnswer {
+    display: block;
+}
+
+ol.questions,
+ul.answers,
+ul.responses,
+ol.questions li,
+ul.answers li,
+ul.responses li {
+    list-style-type: none;
+}
+
+/* Accessibility */
+.quizName span:first-child {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+#slickQuiz{
+  border:1px solid #e2e2e2;
+  padding:22px;
+  border-radius: 4px;
+  line-height: 1.45;
+}
+
+#slickQuiz .quizName{
+  font-size: 1.2em;
+  font-weight: 500;
+  color:#333;
+}
+
+#slickQuiz .quizName{
+  font-size: 1.2em;
+  font-weight: 500;
+  color:#333;
+  margin-bottom: 5px;
+}
+
+#slickQuiz .quizHeader{
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+
+#slickQuiz .quizHeader .startQuiz{
+  display: inline-block;
+  background: #388CF3;
+  margin-top: 10px;
+  border-radius: 2px;
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.5);
+  color:#fff;
+  font-size: 0.9em;
+  padding:10px 18px;
+}
+
+#slickQuiz .questions{
+  margin-top: 10px;
+}
+
+#slickQuiz .questions .questionCount{
+  margin-bottom: 10px;
+  font-size: 0.9em;
+}
+
+#slickQuiz .questions .answers{
+  margin-top: 10px;
+}
+
+#slickQuiz .questions h3{
+  color:#333;
+}
+
+#slickQuiz .questions .answers li{
+  margin-bottom: 10px;
+}
+
+#slickQuiz .questions .complete{
+  display: block;
+  margin-bottom: 20px;
+
+}
+
+#slickQuiz .questions .responses{
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+#slickQuiz .quizResults{
+  margin:20px 0;
+}
+
+#slickQuiz .quizResults .quizResultsCopy{
+  margin-top: 10px;
+}
+
+#courses{
+  display: block;
+  margin:50px 0;
+}
+
+#courses #courseList{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+#courses #courseList .course{
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
+  margin:0 10px 10px 0;
+  border:1px solid #e2e2e2;
+  height: 40px;
+  padding: 0 20px;
+  font-size: 0.95em;
+  border-radius: 90px;
+}
+
+#courses #courseList .course:hover{
+  cursor: pointer;
+  background: #f3f3f3;
+}
+
+#courses #courseList .course .buttons{
+  display: flex;
+  overflow: hidden !important;
+  width: 0;
+  margin: 0;
+  padding:0;
+  vertical-align: middle;
+  align-items: center;
+  text-align: right;
+  line-height: 1;
+  font-size: 0.75em;
+  -moz-transition:  all 0.4s cubic-bezier(0.25, 0.1, 0.2, 1);
+  -o-transition:  all 0.4s cubic-bezier(0.25, 0.1, 0.2, 1);
+  webkit-transition: all 0.4s cubic-bezier(0.25, 0.1, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.25, 0.1, 0.2, 1);
+  justify-content: center;
+}
+
+#courses #courseList .course:hover .buttons{
+  width: 20px;
+  text-align: center;
+  margin-left: 12px;
+  -moz-transition:  all 0.4s cubic-bezier(0.25, 0.1, 0.2, 1);
+  -o-transition:  all 0.4s cubic-bezier(0.25, 0.1, 0.2, 1);
+  webkit-transition: all 0.4s cubic-bezier(0.25, 0.1, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.25, 0.1, 0.2, 1);
+}
+
+#courses #courseList .course .buttons .material-icons{
+  display: none;
+  align-self: center;
+  font-size: 1.6em;
+}
+
+#courses #courseList .course:hover .buttons .material-icons{
+  display: inline-block;
+}
+
+#courses #courseList .course .buttons .close{
+  color:#999;
+}
+
+#courses #courseList .course .buttons .close:hover{
+  color: #1546D2;
+}
+
+#createQuestion{
+  margin:50px 0;
+}
+
+#createQuestion form{
+  padding:22px;
+  border:1px solid #e2e2e2;
+  border-radius: 4px;
+}
+
+#createQuestion form .min-title{
+  font-weight: 500;
+}
+
+#createQuestion form input{
+  padding:12px;
+  font-size: 0.9em;
+  border:1px solid #e2e2e2;
+  border-radius: 2px;
+  width: 100%;
+  outline: none;
+  focus:none;
+}
+
+#createQuestion form input:focus{
+  border-color: #1546D2;
+}
+
+#createQuestion form textarea{
+  padding:12px;
+  font-size: 0.9em;
+  border:1px solid #e2e2e2;
+  border-radius: 2px;
+  width: 100%;
+  outline: none;
+  focus:none;
+  min-height: 100px;
+  line-height: 1.45;
+}
+
+#createQuestion form textarea:focus{
+  border-color: #1546D2;
+}
+
+#createQuestion form .responses{
+  display: block;
+  margin: 20px 0;
+}
+
+#createQuestion form .responses .input-group{
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
+  margin: 10px auto;
+}
+
+#createQuestion form .responses .input-group label{
+  font-size: 0.9em;
+  margin-right: 10px;
+  align-self: center;
+}
+
+#createQuestion form .responses .input-group input{
+  align-self: center;
+}
+
+#createQuestion form .responses .input-group .correct{
+  border-color: #95ee77;
+}
+
+#createQuestion form .responses .wrong{
+  border-color: #f3a3a3;
+}
+
+#createQuestion form .responses .wrong_input_group{
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
+}
+
+#createQuestion form .responses .wrong_input_group .newWrong{
+  margin-top: 10px;
+  align-self: center;
+}
+
+#createQuestion form .responses .wrong_input_group .remove_field{
+  display: inline-block;
+  align-self: center;
+  margin-left: 10px;
+}
+
+#createQuestion form .responses .wrong_input_group .remove_field .material-icons{
+  align-self: center;
+  line-height: 1;
+  margin-top: 13px;
+  color:red;
+}
+
+#createQuestion form .responses .wrong_input_group .remove_field .material-icons:hover{
+  color:#d61f1f;
+}
+
+#createQuestion form .responses .add-field-button{
+  border:none;
+  background-color: none;
+  background: none;
+  padding:0;
+  margin: 0 0 0 10px;
+  font-size: 1.2em;
+  color:#388CF3;
+}
+
+#createQuestion form .responses .add-field-button:hover{
+  cursor: pointer;
+  color: #1546D2;
+}
+
+#createQuestion form .responses .add-field-button .material-icons{
+    font-size: 1.55em;
+    margin-top: 4px;
+}
+
+#createQuestion form .tag-group{
+  display: flex;
+
+  justify-content: space-between;
+  padding-top:10px;
+}
+
+#createQuestion form .tag-group .half{
+  width: 48%;
+}
+
+#createQuestion form .tag-group .half label{
+  display: block;
+  margin-bottom: 10px;
+  font-size: 0.9em;
+}
+
+/*
+#createQuestion form .tag-group .half .left .selectize-input{
+  border-radius: 2px 0px 0px 2px;
+}
+
+#createQuestion form .tag-group .half .right .selectize-input{
+  border-radius: 0px 2px 2px 0px;
+}*/
+
+#createQuestion form .buttons{
+  text-align: right;
+}
+
+#createQuestion form .buttons .button{
+  font-size: 0.9em;
+  padding:14px 24px;
+}
+
+#questionsList{
+  margin: 40px 0;
+}
+
+#questionsList .questions{
+  margin: 0;
+  padding:0;
+  list-style: none;
+  margin-top: 10px;
+}
+
+#questionsList .questions li{
+  margin: 14px 0;
+  border:1px solid #e2e2e2;
+  border-radius: 2px;
+  padding:18px;
+}
+
+#questionsList .questions li .question{
+  color:#333;
+  font-weight: 200;
+  font-size: 1.2em;
+  -moz-transition:  all 0.4s cubic-bezier(0.25, 0.1, 0.2, 1);
+  -o-transition:  all 0.4s cubic-bezier(0.25, 0.1, 0.2, 1);
+  webkit-transition: all 0.4s cubic-bezier(0.25, 0.1, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.25, 0.1, 0.2, 1);
+}
+
+#questionsList .questions li .correct_answer{
+  overflow: hidden;
+  height: 0px;
+  margin-top: 2px;
+  opacity: 0;
+  -moz-transition:  all 0.4s cubic-bezier(0.25, 0.1, 0.2, 1);
+  -o-transition:  all 0.4s cubic-bezier(0.25, 0.1, 0.2, 1);
+  webkit-transition: all 0.4s cubic-bezier(0.25, 0.1, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.25, 0.1, 0.2, 1);
+}
+
+#questionsList .questions li:hover .correct_answer{
+  height: auto;
+  opacity: 1;
+  -moz-transition:  all 0.4s cubic-bezier(0.25, 0.1, 0.2, 1);
+  -o-transition:  all 0.4s cubic-bezier(0.25, 0.1, 0.2, 1);
+  webkit-transition: all 0.4s cubic-bezier(0.25, 0.1, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.25, 0.1, 0.2, 1);
+}
+
+#shareBar{
+  margin: 40px 0;
+}
+
+#shareBar .shareButton{
+  display: inline-block;
+  border:1px solid #e2e2e2;
+  padding: 12px 22px;
+  margin-right: 8px;
+  border-radius: 90px;
+  font-size: 0.9em;
+}
+
+#shareBar .shareButton:hover{
+  cursor: pointer;
+}
+
+#shareBar .facebook:hover{
+  background: #3b5998;
+  border-color: #3b5998;
+  color: #fff;
+}
+
+#shareBar .messenger:hover{
+  background: #1787fb;
+  border-color: #1787fb;
+  color: #fff;
+}
+
+#shareBar .friends{
+  display: flex;
+  flex-wrap: wrap;
+  margin:20px 0;
+}
+
+#shareBar .friends .friend{
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  height: 50px;
+  width: 50px;
+  border-radius:90px;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+#footer{
+  margin-top: 50px;
+  color:#aaa;
+  font-size: 0.9em;
+  margin-bottom: 30px;
+}
