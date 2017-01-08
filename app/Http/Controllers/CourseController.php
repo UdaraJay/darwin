@@ -20,10 +20,11 @@ class CourseController extends Controller
         $course = User::find($user)->courses()->find($course);
 
         $agent = new Agent();
-        if($agent->isDesktop()){
-          return view('course', compact('course'));
-        } else {
+
+        if($agent->isMobile()){
           return view('mobile.course', compact('course'));
+        } else {
+            return view('course', compact('course'));
         }
 
     }

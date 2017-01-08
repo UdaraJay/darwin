@@ -1,7 +1,15 @@
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# product: http://ogp.me/ns/product#">
+<meta property="fb:app_id"                      content="650259121840757" />
+<meta property="og:type"                        content="product.item" />
+<meta property="og:title"                       content="{{$course->name}} on Darwin" />
+<meta property="og:image"                       content="https://todarwin.com/image/darwin-banner-2.png" />
+<meta property="product:retailer_item_id"       content="{{$course->id}}" />
+<meta property="product:price:amount"           content="0" />
+<meta property="product:price:currency"         content="USD" />
+<meta property="product:availability"           content="instock" />
+
 @extends('layouts.app')
-
 @section('content')
-
 <div id="content">
 
   <div class="section">
@@ -26,8 +34,8 @@
   </div>
 
   <div id="shareBar">
-    <div class="min-title">Share with your friends.<br>Ask them to add questions to the same course – We'll then automatically incorporate them into your quizzes.</div>
-    <div class="shareButton facebook" onclick="shareDarwin()">Share on Facebook</div>
+    <div class="min-title">Share with your friends</div>
+    <div class="shareButton facebook" onclick="shareCourse()">Share on Facebook</div>
     <div class="shareButton messenger" onclick="shareDarwinMessage()">Send with Messenger</div>
   </div>
 
@@ -107,6 +115,21 @@
 
     slickQuiz.onCompleteQuiz
 });
+
+//Share course
+function shareCourse() {
+  FB.ui({
+ method: 'share_open_graph',
+ action_type: 'og.likes',
+ action_properties: JSON.stringify({
+   object:'{{Request::fullUrl()}}',
+   scrape: true,
+ })
+ }, function(response){
+   // Debug response (optional)
+   console.log(response);
+ });
+}
 </script>
 
 

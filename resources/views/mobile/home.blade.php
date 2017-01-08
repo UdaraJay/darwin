@@ -59,7 +59,7 @@
                 new jBox('Confirm',{
                   attach: $(this),
                   confirmButton: 'Delete',
-                  cancelButton: 'Canacel',
+                  cancelButton: 'Cancel',
                   closeOnConfirm: 1,
                   preventDefault:1,
                   confirm: function(el){

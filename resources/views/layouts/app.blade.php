@@ -6,9 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-        <meta property="og:url" content="https://todarwin.com" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Darwin: A simple active learning tool for you and your friends" />
+        <meta property="og:url" content="{{Request::fullUrl()}}" />
         <meta property="og:description" content="All this app does is test you daily with questions from anything you're learning." />
         <meta property="og:image" content="https://todarwin.com/image/darwin-banner-2.png" />
         <meta property="fb:app_id" content="650259121840757"/>
@@ -41,8 +39,10 @@
       <div id="wrapper">
         <div id="header">
           <a href="/"><div class="logo"></div></a>
+          @if(Auth::check())
           <input type="text" id="searchBar" class="searchBar" name="search" placeholder="Search courses & subjects...">
           <div class="how" id="how-works">How it works?</div>
+
           <div class="avatar" id="avatar_menu" style="background:#e2e2e2 url({{Auth::user()->avatar}}) no-repeat;">
             <div id="avatar_menu_drop" class="menu">
               <!-- <li><a href="">courses</a></li> -->
@@ -50,6 +50,7 @@
               <li><a href="/logout">logout</a></li>
             </div>
           </div>
+          @endif
 
         </div>
 
@@ -84,39 +85,41 @@
         }
     })
 
-    var $search = $('#searchBar').selectize({
-        valueField: 'id',
-        labelField: 'name',
-        searchField: ['name'],
-        maxOptions: 10,
-        maxItems:1,
-        create: false,
-        render: {
-            option: function (item, escape) {
-                return '<div>' + escape(item.name) + '</div>';
-            }
-        },
-        load: function (query, callback) {
-            if (!query.length) return callback();
-            $.ajax({
-                url: '/search/courses.json?query=' + query,
-                type: 'GET',
-                dataType: 'json',
-                data: {
-                    maxresults: 10
-                },
-                error: function () {
-                    callback();
-                },
-                success: function (res) {
-                    callback(res.courses);
-                }
-            });
-        },
-        onChange: function(value) {
-              window.location.replace("/course/" + {{Auth::user()->id}} + '/' + value);
-					}
-    });
+    @if(Auth::check())
+      var $search = $('#searchBar').selectize({
+          valueField: 'id',
+          labelField: 'name',
+          searchField: ['name'],
+          maxOptions: 10,
+          maxItems:1,
+          create: false,
+          render: {
+              option: function (item, escape) {
+                  return '<div>' + escape(item.name) + '</div>';
+              }
+          },
+          load: function (query, callback) {
+              if (!query.length) return callback();
+              $.ajax({
+                  url: '/search/courses.json?query=' + query,
+                  type: 'GET',
+                  dataType: 'json',
+                  data: {
+                      maxresults: 10
+                  },
+                  error: function () {
+                      callback();
+                  },
+                  success: function (res) {
+                      callback(res.courses);
+                  }
+              });
+          },
+          onChange: function(value) {
+                window.location.replace("/course/" + {{Auth::user()->id}} + '/' + value);
+  					}
+      });
+    @endif
 
   window.fbAsyncInit = function() {
     FB.init({
