@@ -294,6 +294,7 @@ $("#questionForm").submit(function(e) {
                  $('#add_question').html('Add question');
                }, 2000);
                $('#questionForm').trigger("reset");
+               FB.AppEvents.logEvent('questionCreated');
 
            },
            error: function(data)

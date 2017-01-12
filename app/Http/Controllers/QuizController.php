@@ -31,7 +31,7 @@ class QuizController extends Controller
         $singleQuestion['q'] = $question->question;
         $answersArray = array();
 
-        foreach($question->answers()->orderByRaw("RAND()")->get() as $answer){
+        foreach($question->answers()->orderByRaw("RAND()")->where('answer', '!=', '')->get() as $answer){
           $data =array();
           $data['option']  = $answer->answer;
           $data['correct']  = $answer->correct;
@@ -79,7 +79,7 @@ class QuizController extends Controller
         $singleQuestion['q'] = $question->question;
         $answersArray = array();
 
-        foreach($question->answers()->orderByRaw("RAND()")->get() as $answer){
+        foreach($question->answers()->orderByRaw("RAND()")->where('answer', '!=', '')->get() as $answer){
           $data =array();
           $data['option']  = $answer->answer;
           $data['correct']  = $answer->correct;
