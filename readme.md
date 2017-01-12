@@ -7,6 +7,7 @@ Darwin was built on [Laravel](http://laravel.com) 5.3. Reference Laravel documen
 You can run the following code to get started.
 
 **Create a .env file with appropriate environment variables. (use `.env.example` for reference)**
+
 While Laravel comes with a authentication wrapper. Darwin primarily utilizes Facebook login. If you choose to use Facebook login then setup a Facebook app using their developer portal and include the tokens in the .env file. 
 
 **Install dependencies and Laravel using Composer**
@@ -35,4 +36,4 @@ Darwin was built thanks to the following open-source resources:
 
 
 ## License
-The Darwin is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Darwin is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
