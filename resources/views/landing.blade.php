@@ -39,6 +39,15 @@
             </div>
             Costs zero dollars. Pay by contributing questions.</div>
         </div>
+      </div>
+
+      <div id="courses">
+        123
+      </div>
+
+
+
+      <div id="wrapper">
         <div id="footer">Created by <a href="https://udarajay.com">Udara Jay.</a> <span style="margin:0 5px; font-size:0.9em;">•</span> <b>{{$user_count}}</b> people are using Darwin to complement their learning</div>
       </div>
 
